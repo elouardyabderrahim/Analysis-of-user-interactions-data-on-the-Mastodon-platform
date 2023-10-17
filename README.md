@@ -21,6 +21,10 @@ Hadoop's MapReduce framework divides data into parts and processes each part sep
 
 Once you have your MapReduce program ready, you need to run it on a Hadoop cluster. This is achieved with the help of various resources, including RAM and CPU, to efficiently manage these resources.
 
+![hadoopMap reduce](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/adbc99e9-50d4-4590-a379-f42364c9bf40)
+
 ### 3. YARN (Yet Another Resource Negotiator)
 
 The third component of Hadoop is YARN, which plays a crucial role in managing resources within a Hadoop cluster. YARN (Yet Another Resource Negotiator) acts as the resource manager for Hadoop, allocating resources such as memory and CPU across applications efficiently. This ensures that multiple tasks can run simultaneously on a Hadoop cluster without resource contention.
+
+![hadoopyarn](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/84deaa89-8a66-4701-add7-029a4d38b8d4)
