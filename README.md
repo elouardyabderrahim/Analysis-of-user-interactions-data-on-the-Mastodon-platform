@@ -29,15 +29,9 @@ The third component of Hadoop is YARN, which plays a crucial role in managing re
 
 ![hadoopyarn](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/84deaa89-8a66-4701-add7-029a4d38b8d4)
 
-
-```markdown
 ## Hadoop Installation and Configuration on WSL2 (Ubuntu)
-
 This guide will help you install and configure Hadoop 3.2.4 on your WSL2 (Ubuntu) environment.
-
 1. **Download Hadoop**
-
-   Download Hadoop 3.2.4:
 
    ```bash
    wget https://dlcdn.apache.org/hadoop/common/hadoop-3.2.4/hadoop-3.2.4.tar.gz
@@ -124,8 +118,4 @@ This guide will help you install and configure Hadoop 3.2.4 on your WSL2 (Ubuntu
    Save the file and run:
 
    ```bash
-   source ~/.bashrc
-   ```
-
-```
-
+   source ~/.bashrc```
