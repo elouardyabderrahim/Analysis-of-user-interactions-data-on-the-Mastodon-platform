@@ -31,6 +31,7 @@ The third component of Hadoop is YARN, which plays a crucial role in managing re
 
 ## Hadoop Installation and Configuration on WSL2 (Ubuntu)
 This guide will help you install and configure Hadoop 3.2.4 on your WSL2 (Ubuntu) environment.
+
 1. **Download Hadoop**
 
    ```bash
@@ -119,16 +120,15 @@ This guide will help you install and configure Hadoop 3.2.4 on your WSL2 (Ubuntu
 
    ```bash
    source ~/.bashrc
-```
+   
 ### Install AirFlow:
 https://www.freecodecamp.org/news/install-apache-airflow-on-windows-without-docker/
 ![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/b3064af0-fe35-4a30-83a4-08047a643395)
 
-### Installing Hbase:
+## Installing HBase on Ubuntu:
 ![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/ca8b3570-ecd6-4fea-be50-8076809b813d)
 
-```markdown
-## Installing HBase on Ubuntu:
+
 
 Below are the step-by-step instructions for installing HBase on Ubuntu:
 
@@ -189,7 +189,3 @@ Start the HBase shell by running `hbase shell`. It will enter interactive shell 
 Standalone mode doesn't require starting Hadoop daemons. HBase can operate independently.
 
 Enjoy using HBase on Ubuntu .
-```
-
-
-   
