@@ -119,3 +119,77 @@ This guide will help you install and configure Hadoop 3.2.4 on your WSL2 (Ubuntu
 
    ```bash
    source ~/.bashrc
+```
+### Install AirFlow:
+https://www.freecodecamp.org/news/install-apache-airflow-on-windows-without-docker/
+![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/b3064af0-fe35-4a30-83a4-08047a643395)
+
+### Installing Hbase:
+![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/ca8b3570-ecd6-4fea-be50-8076809b813d)
+
+```markdown
+## Installing HBase on Ubuntu:
+
+Below are the step-by-step instructions for installing HBase on Ubuntu:
+
+### Step 1: Place the following command
+
+Place `hbase-1.1.2-bin.tar.gz` in the `/home/hduser` directory.
+
+### Step 2: Extract it by running the command
+
+Use the command below to extract the contents and create a folder named `hbase-1.1.2` in the `/home/hduser` location:
+
+```bash
+tar -xvf hbase-1.1.2-bin.tar.gz
+```
+
+### Step 3: Configure hbase-env.sh
+
+Open the `hbase-env.sh` file and specify the `JAVA_HOME` path.
+
+### Step 4: Configure the .bashrc file
+
+Open the `~/.bashrc` file and specify the `HBASE_HOME` path as follows:
+
+```bash
+export HBASE_HOME=/home/hduser/hbase-1.1.1
+export PATH=$PATH:$HBASE_HOME/bin
+```
+
+### Step 5: Add properties to the hbase-site.xml file
+
+Open the `hbase-site.xml` file and add the following properties:
+
+```xml
+<property>
+  <name>hbase.rootdir</name>
+  <value>file:///home/hduser/HBASE/hbase</value>
+</property>
+<property>
+  <name>hbase.zookeeper.property.dataDir</name>
+  <value>/home/hduser/HBASE/zookeeper</value>
+</property>
+```
+
+### Step 6: Specify IP addresses
+
+Edit the `/etc/hosts` file and specify IP addresses as indicated.
+
+### Step 7: Run the Start-hbase.sh script
+
+Execute the `Start-hbase.sh` script located in the `hbase-1.1.1/bin` directory.
+
+You can check whether HMaster is running or not by using the `jps` command.
+
+### Step 8: Start the HBase shell
+
+Start the HBase shell by running `hbase shell`. It will enter interactive shell mode, allowing you to execute various commands.
+
+Standalone mode doesn't require starting Hadoop daemons. HBase can operate independently.
+
+Enjoy using HBase on Ubuntu .
+```
+
+
+   
