@@ -118,4 +118,4 @@ This guide will help you install and configure Hadoop 3.2.4 on your WSL2 (Ubuntu
    Save the file and run:
 
    ```bash
-   source ~/.bashrc```
+   source ~/.bashrc
