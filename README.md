@@ -125,10 +125,11 @@ This guide will help you install and configure Hadoop 3.2.4 on your WSL2 (Ubuntu
    
 ### Install AirFlow:
 https://www.freecodecamp.org/news/install-apache-airflow-on-windows-without-docker/
-![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/b3064af0-fe35-4a30-83a4-08047a643395)
+![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/961565a8-2d7a-4f04-ba77-0e84726ee627)
 
 ## Installing HBase on Ubuntu:
-![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/ca8b3570-ecd6-4fea-be50-8076809b813d)
+![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/bc0c7e99-251b-4867-bac6-ca037f4313ca)
+
 
 
 
