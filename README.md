@@ -21,13 +21,15 @@ Hadoop's MapReduce framework divides data into parts and processes each part sep
 
 Once you have your MapReduce program ready, you need to run it on a Hadoop cluster. This is achieved with the help of various resources, including RAM and CPU, to efficiently manage these resources.
 
-![hadoopMap reduce](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/adbc99e9-50d4-4590-a379-f42364c9bf40)
+![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/6b7957d5-5108-4f0c-b60e-4d7f561366fc)
+
 
 ### 3. YARN (Yet Another Resource Negotiator)
 
 The third component of Hadoop is YARN, which plays a crucial role in managing resources within a Hadoop cluster. YARN (Yet Another Resource Negotiator) acts as the resource manager for Hadoop, allocating resources such as memory and CPU across applications efficiently. This ensures that multiple tasks can run simultaneously on a Hadoop cluster without resource contention.
 
-![hadoopyarn](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/84deaa89-8a66-4701-add7-029a4d38b8d4)
+![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/5eeb859a-7c9e-45c8-a9c4-05a9bffdd11f)
+
 
 ## Hadoop Installation and Configuration on WSL2 (Ubuntu)
 This guide will help you install and configure Hadoop 3.2.4 on your WSL2 (Ubuntu) environment.
