@@ -1,0 +1,59 @@
+package my.books;
+
+import my.books.Mappers.Map;
+import my.books.Mappers.MaperCountLanguages;
+import my.books.Reducers.Reduce;
+import my.books.Reducers.ReducerCountLanguages;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class Driver {
+
+    public static void main(String[] args) throws Exception {
+        if (args.length != 3) {
+            System.err.println("Usage: Driver <input path> <output path1> <output path2> <output path3>"+args[1]+args[0]);
+            System.exit(-1);
+        }
+
+        Configuration conf = new Configuration();
+        Job job = Job.getInstance(conf, "Language Posts");
+
+        job.setJarByClass(Driver.class);
+        job.setMapperClass(Map.class);
+        job.setReducerClass(Reduce.class);
+
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
+
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+        if (job.waitForCompletion(true)) {
+            // Create and configure the second MapReduce job (CountLanguages)
+            Configuration conf2 = new Configuration();
+            Job job2 = Job.getInstance(conf2, "Count Languages");
+
+            job2.setJarByClass(Driver.class);
+            job2.setMapperClass(MaperCountLanguages.class);
+            job2.setReducerClass(ReducerCountLanguages.class);
+
+            job2.setOutputKeyClass(Text.class);
+            job2.setOutputValueClass(IntWritable.class);
+
+            FileInputFormat.addInputPath(job2, new Path(args[0]));
+            FileOutputFormat.setOutputPath(job2, new Path(args[2]));
+
+            if (job2.waitForCompletion(true)) {
+                System.exit(0); // Exit with a success code
+            } else {
+                System.exit(1); // Exit with an error code if the second job fails
+            }
+        } else {
+            System.exit(1); // Exit with an error code if the first job fails
+        }}}
+
