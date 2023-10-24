@@ -238,5 +238,9 @@ Determine how long you need to retain this personal data and delete it when it i
 
 Establish a process to handle user requests for access, rectification, or deletion of personal data.
 
+# Planification:
+## JIRA:
+![image](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/34508b02-8103-49c4-b243-78e93b42f5ee)
+
 
 
