@@ -19,7 +19,7 @@ public class MaperCountLanguages extends Mapper<LongWritable, Text, Text, IntWri
                 context.write(new Text(language), new IntWritable(1));
             }
         } catch (JSONException e) {
-            // Handle JSON parsing exceptions here
+            System.err.println(e);
         }
     }
 }

@@ -25,7 +25,7 @@ public  class Map extends Mapper<LongWritable, Text, Text, Text> {
             context.write(new Text(username), new Text(postData.toString()));
 
         } catch (JSONException e) {
-            // Handle JSON parsing exceptions here
+            System.err.println(e);
         }
     }
 }

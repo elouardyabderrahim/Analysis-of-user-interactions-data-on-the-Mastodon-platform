@@ -12,15 +12,28 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class Driver {
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
+        if (args.length != 1) {
             System.err.println("Usage: Driver <input path> <output path1> <output path2> <output path3>");
             System.exit(-1);
         }
 
+        Configuration conf = HBaseConfiguration.create();
+        Job job = Job.getInstance(conf, "user Posts");
+
+        job.setJarByClass(Driver.class);
+        job.setMapperClass(Map.class);
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(Text.class);
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+
+        // Set the output format for HBase
+        TableMapReduceUtil.initTableReducerJob("user_post", Reduce.class, job);
+        job.setReducerClass(Reduce.class);
+
+/*
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "Language Posts");
 
@@ -32,7 +45,7 @@ public class Driver {
         job.setOutputValueClass(Text.class);
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));*/
 
         if (job.waitForCompletion(true)) {
 

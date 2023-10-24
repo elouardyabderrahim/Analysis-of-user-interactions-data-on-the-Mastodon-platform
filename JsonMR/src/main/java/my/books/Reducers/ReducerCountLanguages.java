@@ -20,7 +20,7 @@ public class ReducerCountLanguages extends TableReducer<Text, IntWritable, Text>
 
         // Create a Put object to insert data into HBase
         Put put = new Put(Bytes.toBytes(key.toString()));
-        put.addColumn(Bytes.toBytes("cf"), Bytes.toBytes("language"), Bytes.toBytes(languageCount+""));
+        put.addColumn(Bytes.toBytes("cf"), Bytes.toBytes("language"), Bytes.toBytes(languageCount));
 
         // Write the data to the HBase table
         context.write(key, put);
