@@ -6,6 +6,8 @@ import my.books.Reducers.Reduce;
 import my.books.Reducers.ReducerCountLanguages;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.mapreduce.TableMapReduceUtil;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -13,10 +15,9 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class Driver {
-
     public static void main(String[] args) throws Exception {
-        if (args.length != 3) {
-            System.err.println("Usage: Driver <input path> <output path1> <output path2> <output path3>"+args[1]+args[0]);
+        if (args.length != 2) {
+            System.err.println("Usage: Driver <input path> <output path1> <output path2> <output path3>");
             System.exit(-1);
         }
 
@@ -34,8 +35,22 @@ public class Driver {
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         if (job.waitForCompletion(true)) {
+
+            Configuration conf2 = HBaseConfiguration.create();
+            Job job2 = Job.getInstance(conf2, "Count Languages");
+
+            job2.setJarByClass(Driver.class);
+            job2.setMapperClass(MaperCountLanguages.class);
+            job2.setMapOutputKeyClass(Text.class);
+            job2.setMapOutputValueClass(IntWritable.class);
+            FileInputFormat.addInputPath(job2, new Path(args[0]));
+
+            // Set the output format for HBase
+            TableMapReduceUtil.initTableReducerJob("language_count2", ReducerCountLanguages.class, job2);
+            job2.setReducerClass(ReducerCountLanguages.class);
+
             // Create and configure the second MapReduce job (CountLanguages)
-            Configuration conf2 = new Configuration();
+            /*Configuration conf2 = org.apache.hadoop.hbase.HBaseConfiguration.create();
             Job job2 = Job.getInstance(conf2, "Count Languages");
 
             job2.setJarByClass(Driver.class);
@@ -46,8 +61,13 @@ public class Driver {
             job2.setOutputValueClass(IntWritable.class);
 
             FileInputFormat.addInputPath(job2, new Path(args[0]));
-            FileOutputFormat.setOutputPath(job2, new Path(args[2]));
 
+            // Do not use FileOutputFormat.setOutputPath for the second job
+
+            // Configure the output format for HBase
+            job2.setOutputFormatClass(TableOutputFormat.class);
+            job2.getConfiguration().set(TableOutputFormat.OUTPUT_TABLE, "language_count");
+*/
             if (job2.waitForCompletion(true)) {
                 System.exit(0); // Exit with a success code
             } else {
@@ -55,5 +75,6 @@ public class Driver {
             }
         } else {
             System.exit(1); // Exit with an error code if the first job fails
-        }}}
-
+        }
+    }
+}
