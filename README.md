@@ -192,3 +192,51 @@ Start the HBase shell by running `hbase shell`. It will enter interactive shell 
 Standalone mode doesn't require starting Hadoop daemons. HBase can operate independently.
 
 Enjoy using HBase on Ubuntu .
+
+# GDPR and Personal Data Processing
+
+## Identified Personal Data
+
+In the Mastodon message, the following personal data has been identified:
+
+1. **User ID** (may be associated with a real person).
+2. **User's username** (may be a pseudonym).
+3. **User's display name** (may be a pseudonym).
+4. **User's description** (may contain personal information).
+5. **User's profile URL** (may contain personal information).
+6. **User's profile picture** (may be a profile photo).
+
+## Steps to Ensure GDPR Compliance
+
+To ensure GDPR compliance in the processing of this personal data, follow the following steps:
+
+### a. Identification of Personal Data
+
+You have already identified the personal data in the Mastodon message. Ensure that this information is documented for proper traceability.
+
+### b. Legal Basis for Processing
+
+Determine the legal basis for processing this personal data. This can be user consent or a legitimate interest in collecting this data.
+
+### c. Transparency
+
+Ensure that users are informed about the collection of their personal data and the purposes of processing, for example, by displaying a privacy policy.
+
+### d. User Rights
+
+Respect the rights of users under GDPR, such as the right to access, rectify, delete, and port their data.
+
+### e. Data Security
+
+Ensure that personal data is stored securely to prevent data breaches.
+
+### f. Data Retention Period
+
+Determine how long you need to retain this personal data and delete it when it is no longer necessary.
+
+### g. Management of GDPR Requests
+
+Establish a process to handle user requests for access, rectification, or deletion of personal data.
+
+
+
