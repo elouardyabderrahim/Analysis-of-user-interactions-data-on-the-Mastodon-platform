@@ -1,30 +1,47 @@
-# Analysis of user interactions data on the Mastodon platform
-This project aims to analyze social media data to gather insights into user engagement, content popularity, etc. It utilizes MapReduce for data processing, stores the results in HBase, and orchestrates the workflow with Apache Airflow.
+1. **Users Table:**
+   - Create an HBase table to store user-related information.
 
-## Hadoop: Handling Big Data
+   ```
+   create 'Users', 'user_data', 'account_data'
+   ```
 
-Hadoop is a powerful framework designed to handle the challenges posed by large-scale datasets, often referred to as "BIG DATA." The ordinary methods of data processing are not sufficient for these massive datasets. Hadoop is comprised of three key components, each tailored to work with big data effectively.
+   - `user_data` column family can store user-specific data like username, user ID, and any other user-related information.
+   - `account_data` column family can store account-specific data like the number of followers, following count, and other account-related information.
 
-### 1. Storing Data: HDFS (Hadoop Distributed File System)
+2. **Content Table:**
+   - Create an HBase table to store content-related information.
 
-In the first step of handling big data, we address the need for scalable storage. HDFS, the Hadoop Distributed File System, is a fundamental component for this purpose. It takes the large dataset and distributes it among different computers while storing it in blocks.
+   ```
+   create 'Content', 'post_data', 'media_attachments'
+   ```
 
-For example, if we have a 600MB dataset, HDFS divides it into 128MB blocks. These blocks are created and then replicated three times, with each copy stored on different data nodes. This replication method ensures data redundancy, making HDFS fault-tolerant.
+   - `post_data` column family can store post-specific data like post ID, content, created_at, and language.
+   - `media_attachments` column family can store information about media attachments.
 
-In case of data node failures, data remains accessible, and no information is lost. HDFS's ability to create multiple copies of data and distribute them across various systems helps ensure data integrity.
+3. **Language Table:**
+   - Create an HBase table to store language-related information.
 
-### 2. Processing Data: MapReduce
+   ```
+   create 'Languages', 'language_data'
+   ```
 
-After effectively storing large datasets, the next challenge is processing the data efficiently. This is where MapReduce comes into play. In the traditional way, processing all the data as one unit can be time-consuming and resource-intensive. 
+   - `language_data` column family can store language-related data and post counts per language.
 
-Hadoop's MapReduce framework divides data into parts and processes each part separately on different data nodes. This parallel processing approach allows for more efficient data processing, ultimately resulting in a final output.
+4. **Engagement Table:**
+   - Create an HBase table to store engagement-related information.
 
-Once you have your MapReduce program ready, you need to run it on a Hadoop cluster. This is achieved with the help of various resources, including RAM and CPU, to efficiently manage these resources.
+   ```
+   create 'Engagement', 'engagement_data'
+   ```
 
-![hadoopMap reduce](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/adbc99e9-50d4-4590-a379-f42364c9bf40)
+   - `engagement_data` column family can store data related to engagement metrics, such as favorites, reblogs, and replies.
 
-### 3. YARN (Yet Another Resource Negotiator)
+5. **Tags and Mentions Table:**
+   - Create an HBase table to store tag and mention information.
 
-The third component of Hadoop is YARN, which plays a crucial role in managing resources within a Hadoop cluster. YARN (Yet Another Resource Negotiator) acts as the resource manager for Hadoop, allocating resources such as memory and CPU across applications efficiently. This ensures that multiple tasks can run simultaneously on a Hadoop cluster without resource contention.
+   ```
+   create 'TagsMentions', 'tags', 'mentions'
+   ```
 
-![hadoopyarn](https://github.com/elouardyabderrahim/Analysis-of-user-interactions-data-on-the-Mastodon-platform/assets/101024060/84deaa89-8a66-4701-add7-029a4d38b8d4)
+   - `tags` column family can store tag-related data, such as tag names and counts.
+   - `mentions` column family can store mention-related data, such as mentioned usernames and counts.
